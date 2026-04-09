@@ -2,8 +2,9 @@
 
 The repository documentation system separates:
 
-- global docs under `docs/`
-- optional co-located docs in `*.docs.md` files next to specific source or configuration files
+- [global docs](../DICTIONARY.md#global-docs) under `docs/`
+- optional [co-located docs](../DICTIONARY.md#co-located-docs) in `*.docs.md`
+  files next to specific source or configuration files
 
 Recommended ownership:
 
@@ -73,5 +74,6 @@ Co-located docs maintenance rules:
 
 - when a concrete source or configuration file changes, check whether an adjacent co-located docs file exists
 - if it exists and the change affects documented behavior, interface, intent, invariants, or constraints, update it in the same task
-- if it does not exist, do not create one unless explicitly requested
+- if it does not exist, do not create one as part of normal maintenance
+- new co-located docs are created manually and only when explicitly requested
 - co-located docs do not participate in `docs/_index.md` routing or `_index.md` propagation

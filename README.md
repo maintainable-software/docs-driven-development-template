@@ -18,25 +18,15 @@ You'll get a reusable documentation workflow that you can copy into your own rep
 
 ## How To Set Up
 
-For any agent:
+For Codex:
 
 - add the contents of `AGENTS.md` to your repository's `AGENTS.md`, or copy the file if you do not already have one
 - copy the `docs/` directory into the target repository
-
-This shared setup gives the destination repository the canonical DEA documentation model and the repository-level workflow rules.
-
-Continue with:
-
-- [Set Up With Codex](#set-up-with-codex)
-- [Set Up With Claude](#set-up-with-claude)
-
-### Set Up With Codex
-
-For the Codex-specific setup:
-
 - copy `.agents/skills/` into the target repository
 - copy the contents of `.codex/config.toml`
 - copy `.codex/profiles/repo-analyst.md` into your `.codex/profiles`
+
+This setup gives the destination repository the DEA documentation model, the Codex activation rules, and the Codex-specific workflow implementation.
 
 Recommended target layout in the destination repository:
 
@@ -78,9 +68,9 @@ What users need to do:
 - define which global docs areas should exist under `docs/`
 - define which topic docs should be added as the repository grows
 - decide what belongs in global docs versus co-located `*.docs.md` files
-- define the repository's actual business-domain terminology in `docs/DICTIONARY.md` once stable terms exist
+- define the repository's actual terminology in `docs/DICTIONARY.md` once stable terms exist
 - make explicit when new workflow conventions or product concepts should become canonical documentation
-- explicitly request creation of new co-located docs when they are warranted, because co-located doc creation is intentionally conservative
+- create new co-located docs manually and explicitly when they are warranted; the workflow will not generate them for you
 
 What the workflow automates for Codex once those structures exist:
 
@@ -127,7 +117,7 @@ The intended split is:
 
 ### File Inventory And Intent
 
-#### Shared Across Agents
+#### Shared Workflow Layer
 
 These files are intended to be reusable regardless of agent vendor.
 
@@ -154,8 +144,8 @@ These files are intended to be reusable regardless of agent vendor.
 
 `docs/DICTIONARY.md`
 
-- Canonical business-domain dictionary for terminology used by this repository's own docs.
-- Keeps domain language consistent, linkable, and centrally maintained.
+- Canonical repository terminology dictionary for this repository's own docs.
+- Keeps repository language consistent, linkable, and centrally maintained.
 
 `docs/process/_index.md`
 
@@ -200,25 +190,21 @@ These files are intended to be reusable regardless of agent vendor.
 
 These files are shared because they define the DEA model itself rather than any Codex-specific mechanism.
 
-#### Shared In Spirit, But Currently Codex-Wired
+#### Codex Activation Layer
 
 `AGENTS.md`
 
-- Declares the always-on repository rules for how the workflow must be applied.
-- Tells the agent to route through global docs for every substantive prompt.
-- Tells the agent to check co-located docs when reading or editing concrete files.
-- Tells the agent to maintain global docs, the dictionary, and co-located docs when relevant.
+- Declares the always-on repository rules that activate the workflow for Codex.
+- Routes detailed policy into `docs/process/` instead of duplicating it locally.
+- Tells the agent when to invoke the routing, dictionary, and co-located docs skills.
 
-This file is conceptually cross-agent, but the current contents are explicitly wired to Codex skills by name:
+This file is explicitly wired to Codex skills by name:
 
 - `global-docs-router`
 - `global-docs-maintainer`
 - `business-dictionary-maintainer`
 - `colocated-docs-reader`
 - `colocated-docs-maintainer`
-- `colocated-docs-creator`
-
-That means the policy is reusable, but the mechanism currently assumes an agent runtime that understands this skill system.
 
 #### Codex-Specific
 
@@ -243,10 +229,6 @@ That means the policy is reusable, but the mechanism currently assumes an agent 
 
 - Codex operational skill for updating an existing adjacent `*.docs.md` file when the documented file changes.
 
-`.agents/skills/colocated-docs-creator/SKILL.md`
-
-- Codex operational skill for creating a new co-located doc only when the user explicitly requested one and the file meets narrow warrant criteria.
-
 `.codex/config.toml`
 
 - Codex configuration file.
@@ -258,31 +240,6 @@ That means the policy is reusable, but the mechanism currently assumes an agent 
 - Codex profile instructions for analytical work.
 - Expands the default reading behavior to lower omission risk.
 - Optimizes for repository understanding, contradiction-finding, and broad context gathering instead of minimal implementation-oriented routing.
-
-### Current Agent Support Matrix
-
-Shared across all agents in principle:
-
-- `docs/`
-
-Shared across some agents but not all in current form:
-
-- `AGENTS.md`
-  - directly useful for Codex
-  - potentially reusable for Cursor and other tools that recognize `AGENTS.md`
-  - not a complete native integration for Claude or Gemini as currently implemented
-
-Codex-specific:
-
-- `.agents/skills/`
-- `.codex/config.toml`
-- `.codex/profiles/repo-analyst.md`
-
-Not yet implemented:
-
-- Claude-native files such as `CLAUDE.md` or `.claude/...`
-- Gemini-native files such as `GEMINI.md` or Gemini-specific project configuration
-- Cursor-native rule files beyond the partial reuse possible through `AGENTS.md`
 
 ### DEA Workflow Wiring
 
@@ -328,19 +285,3 @@ The two systems are intentionally separate:
 
 - global docs participate in `_index.md` routing
 - co-located docs are discovered only by adjacency
-
-### What Would Need To Change For Multi-Agent Support
-
-To support more than Codex cleanly, keep `docs/` as the canonical workflow layer and add thin native integration files per agent.
-
-Examples:
-
-- Claude support would add `CLAUDE.md` and likely `.claude/` configuration while continuing to reuse `docs/`.
-- Gemini support would add Gemini-native repository instructions while continuing to reuse `docs/`.
-- Cursor support would likely reuse `AGENTS.md` and may add Cursor-native rule configuration if needed.
-
-The intended future pattern is:
-
-- one shared DEA model in `docs/`
-- one thin activation layer per agent runtime
-- minimal duplication of workflow logic outside `docs/`

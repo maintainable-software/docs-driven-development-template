@@ -12,7 +12,7 @@ Current reality:
   docs area after substantive docs changes, rather than only updating
   explicitly mentioned terms.
 - Contradictions noticed during docs routing should be surfaced even when contradiction-finding was not explicitly requested.
-- Co-located docs remain optional and conservative by default.
+- [Co-located docs](../DICTIONARY.md#co-located-docs) remain optional and conservative by default, and new ones are created manually rather than by a creator skill.
 
 Known gaps:
 

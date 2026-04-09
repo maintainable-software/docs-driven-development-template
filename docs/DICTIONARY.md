@@ -55,8 +55,38 @@ anywhere in `docs/`.
 
 ## Repository Concepts
 
-No entries yet.
+### Co-Located Docs
+
+Optional Markdown files named `*.docs.md` that live next to one concrete
+source or configuration file and capture local guidance that would be hard to
+recover quickly from code alone.
+
+They are discovered by adjacency rather than through the global docs index.
+
+### Global Docs
+
+The canonical documentation files under `docs/` that define repository-wide
+facts, workflow rules, routing metadata, and shared terminology.
+
+They are routed through `docs/_index.md` and area `_index.md` files.
+
+### Indexed Docs System
+
+The repository documentation model that separates [global docs](#global-docs)
+under `docs/` from optional [co-located docs](#co-located-docs) and uses
+structured `_index.md` files for discoverability.
 
 ## Meta And Internal Terms
 
-No entries yet.
+### Dictionary Coverage Pass
+
+A review of the affected docs area after a substantive docs change to ensure
+stable terms used by that area are present in `docs/DICTIONARY.md`, important
+uses are linked where needed, and stale removed-term links are cleaned up.
+
+### System-Part Doc
+
+A focused doc that explicitly documents one system part.
+
+When this kind of doc is used, it should include `Responsibility`,
+`Not responsible for`, `Inputs`, `Outputs`, and `Adjacent parts`.

@@ -47,3 +47,15 @@ document per responsibility or system part plus a separate composition document
 rather than one umbrella document that mixes responsibilities.
 
 This keeps the docs usable as a design aid rather than only as prose.
+
+## Keep Co-Located Doc Creation Manual
+
+Creating new [co-located docs](../DICTIONARY.md#co-located-docs) changes the
+repository's documentation shape.
+
+That is a design choice, not routine maintenance.
+
+The workflow may discover and maintain existing `*.docs.md` files, but it
+should not create new ones automatically.
+
+This keeps file-local docs explicit and avoids low-value documentation churn.
