@@ -20,7 +20,7 @@ Use this skill for every substantive prompt before implementation work starts.
 9. Read the area's `_decisions.md` when rationale, tradeoffs, or historical intent matter to the task.
 10. Read only the minimum sufficient set of topic docs after the relevant higher-level area docs are loaded.
 11. Read `docs/process/conceptual-simplicity.md` when the task affects architecture, implementation boundaries, system decomposition, terminology boundaries, or docs structure.
-12. Read `docs/DICTIONARY.md` when the task depends on business-domain terminology, terminology consistency, or docs prose that may introduce or redefine important terms.
+12. Read `docs/DICTIONARY.md` when the task depends on repository terminology, terminology consistency, or docs prose that may introduce or redefine important terms.
 13. If you notice a meaningful contradiction or mismatch while routing or reading global docs, surface it clearly even if the user did not explicitly ask for contradiction-finding.
 14. If global docs and code disagree, trust the code and note the mismatch.
 
@@ -38,7 +38,7 @@ Use this skill for every substantive prompt before implementation work starts.
 ## Canonical References
 
 Read [docs/_index.md](../../../docs/_index.md) for the root global docs index.
-Read [docs/DICTIONARY.md](../../../docs/DICTIONARY.md) when repository business-domain terms matter to the task.
+Read [docs/DICTIONARY.md](../../../docs/DICTIONARY.md) when repository terminology matters to the task.
 Read [docs/process/_index.md](../../../docs/process/_index.md) for process docs routing.
 Read [docs/process/conceptual-simplicity.md](../../../docs/process/conceptual-simplicity.md) when the task depends on conceptual boundaries, module responsibilities, or anti-complecting rules.
 Read [docs/process/docs-routing.md](../../../docs/process/docs-routing.md) when the repository follows the indexed global docs system.

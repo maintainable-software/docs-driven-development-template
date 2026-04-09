@@ -6,7 +6,7 @@
 * When global docs are needed, route through the indexed docs system under `docs/` and read only the minimum sufficient set.
 * In each docs folder, treat `_index.md` as navigation, `README.md` as the mandatory human mental-model entrypoint, `_status.md` as present-state context, `_decisions.md` as rationale, and ordinary topic docs as focused mechanisms or rules.
 * When a task affects architecture, implementation boundaries, system decomposition, terminology boundaries, or docs structure, include `docs/process/conceptual-simplicity.md` in the minimum sufficient context.
-* When a task depends on repository business-domain terminology, terminology consistency, or docs prose that may introduce or change important terms, include `docs/DICTIONARY.md` in the minimum sufficient context.
+* When a task depends on repository terminology, terminology consistency, or docs prose that may introduce or change important terms, include `docs/DICTIONARY.md` in the minimum sufficient context.
 * If `global-docs-router` notices a meaningful contradiction or mismatch while routing or reading global docs, surface it clearly even if the user did not explicitly ask for contradiction-finding.
 
 ### Colocated Docs Reading
@@ -28,11 +28,11 @@
 * When an area has clear responsibility boundaries, prefer one focused doc per responsibility or system part plus a composition doc.
 * When a focused doc explicitly documents a system part, include at least `Responsibility`, `Not responsible for`, `Inputs`, `Outputs`, and `Adjacent parts`.
 
-### Business Dictionary Maintenance
+### Dictionary Maintenance
 
-* `docs/DICTIONARY.md` is the canonical dictionary for the business-domain language used by this repository's own `docs/` tree.
-* When docs or repository instructions introduce, rename, redefine, or remove important business-domain terms, use the `business-dictionary-maintainer` skill.
-* In `docs/` prose, link business-domain terms to the matching dictionary entry unless the term is being used as code, CLI syntax, or a file path in backticks.
+* `docs/DICTIONARY.md` is the canonical dictionary for the repository terminology used by this repository's own `docs/` tree.
+* When docs or repository instructions introduce, rename, redefine, or remove important repository terms, use the `business-dictionary-maintainer` skill.
+* In `docs/` prose, link repository terms to the matching dictionary entry unless the term is being used as code, CLI syntax, or a file path in backticks.
 
 ### Colocated Docs Maintenance
 

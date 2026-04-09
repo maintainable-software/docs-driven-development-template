@@ -12,7 +12,7 @@ Recommended ownership:
 - `docs/**/README.md`: mandatory human mental-model entrypoint for each docs folder
 - `docs/**/_status.md`: optional present-state doc for current reality, active uncertainty, known gaps, or open questions
 - `docs/**/_decisions.md`: optional rationale doc for important choices and tradeoffs
-- `docs/DICTIONARY.md`: canonical business-domain dictionary for the repository's docs tree
+- `docs/DICTIONARY.md`: canonical repository terminology dictionary for the repository's docs tree
 - topic docs under `docs/`: global canonical facts
 - `<file>.docs.md`: optional local documentation for one concrete file or module
 
@@ -55,7 +55,7 @@ Global docs maintenance rules:
 - update or create parent routing `_index.md` files only where routing or discoverability changed
 - ensure each `_index.md` entry for an existing global doc includes `Path`, `Summary`, `Read when`, and `Tags`
 - stop once the next parent `_index.md` would not need any change
-- update `docs/DICTIONARY.md` when important business-domain terms are introduced, renamed, redefined, or removed
+- update `docs/DICTIONARY.md` when important repository terms are introduced, renamed, redefined, or removed
 
 Global docs reading rules:
 

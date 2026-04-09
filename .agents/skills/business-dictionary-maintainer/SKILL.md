@@ -1,16 +1,19 @@
 ---
 name: business-dictionary-maintainer
-description: Maintain `docs/DICTIONARY.md` as the canonical business-domain glossary for this repository's docs by adding, updating, linking, and removing term definitions when domain language changes.
+description: Maintain `docs/DICTIONARY.md` as the canonical repository terminology dictionary for this repository's docs by adding, updating, linking, and removing term definitions when terminology changes.
 ---
 
 # Business Dictionary Maintainer
 
-Use this skill whenever repository docs or instructions introduce, rename, redefine, or remove business-domain language that matters to understanding the repository.
+Use this skill whenever repository docs or instructions introduce, rename,
+redefine, or remove repository terminology that matters to understanding the
+repository.
 
 ## Workflow
 
 1. Read `docs/DICTIONARY.md`.
-2. Identify which business-domain terms were introduced, changed, or removed by the current task.
+2. Identify which repository terms were introduced, changed, or removed by the
+   current task.
 3. Add, update, merge, or remove dictionary entries so `docs/DICTIONARY.md` remains the single canonical source for those terms.
 4. Keep entries sorted alphabetically by term.
 5. When a term is easy to misunderstand, easy to misuse, or overloaded in everyday language, include a short usage example. Prefer a concrete command example when usage depends on a command.
@@ -20,7 +23,8 @@ Use this skill whenever repository docs or instructions introduce, rename, redef
 
 ## Boundaries
 
-- Use this skill for repository business-domain language, not for general English words.
+- Use this skill for important repository terminology, not for general English
+  words.
 - Do not let `docs/DICTIONARY.md` accumulate near-synonyms for the same concept without clarifying the preferred term.
 - Do not restate code-level implementation details that belong in topic docs or co-located docs.
 - Keep examples short and practical.

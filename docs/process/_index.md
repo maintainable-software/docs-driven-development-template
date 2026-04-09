@@ -40,11 +40,11 @@ Process docs define how repository documentation is structured, routed, and main
 - Read when: The task changes the overall documentation system, ownership of docs files, index maintenance rules, or the relationship between global and co-located docs.
 - Tags: docs, system, maintenance, global-docs, colocated-docs
 
-### Business Dictionary
+### Dictionary
 - Path: `docs/DICTIONARY.md`
-- Summary: Defines the canonical business-domain language used by this repository's own docs tree and how terminology should stay consistent.
-- Read when: The task depends on repository terminology, term consistency, ambiguous business-domain language, or docs changes that introduce, rename, redefine, or remove important terms.
-- Tags: docs, dictionary, terminology, glossary, business-language
+- Summary: Defines the canonical repository terminology used by this repository's own docs tree and how terminology should stay consistent.
+- Read when: The task depends on repository terminology, term consistency, ambiguous repository language, or docs changes that introduce, rename, redefine, or remove important terms.
+- Tags: docs, dictionary, terminology, glossary, repository-language
 
 ### Colocated Docs
 - Path: `docs/process/colocated-docs.md`

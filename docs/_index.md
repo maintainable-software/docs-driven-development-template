@@ -24,9 +24,9 @@ This repository uses an indexed docs system.
 
 ### Dictionary
 - Path: `docs/DICTIONARY.md`
-- Summary: Canonical definitions for the business-domain language used by this repository's own `docs/` tree.
-- Read when: The task depends on repository terminology, term consistency, ambiguous domain language, or docs changes that may introduce, rename, redefine, or remove important terms.
-- Tags: docs, dictionary, terminology, glossary, domain-language
+- Summary: Canonical definitions for the repository terminology used by this repository's own `docs/` tree.
+- Read when: The task depends on repository terminology, term consistency, ambiguous repository language, or docs changes that may introduce, rename, redefine, or remove important terms.
+- Tags: docs, dictionary, terminology, glossary, repository-language
 
 ### Process
 - Path: `docs/process/_index.md`
