@@ -13,12 +13,15 @@ Use this skill whenever work changes global repository documentation or reposito
 2. Ensure the affected docs folder still has a `README.md` that explains what the area is, why it exists, and the core mental model humans should use when reading the area.
 3. Update or create the folder's `_status.md` when the change affects current reality, active uncertainty, known gaps, or open questions.
 4. Update or create the folder's `_decisions.md` when the change affects important rationale or tradeoffs that would not be obvious from the current docs shape alone.
-5. Add a new focused global doc only when no current doc in `docs/` is a good fit.
-6. Check the co-located `_index.md` first and update it if routing or discoverability changed.
-7. Walk upward one folder at a time toward `docs/_index.md`, updating or creating routing `_index.md` files only where needed.
-8. Stop once the next parent `_index.md` would not need any change.
-9. Ensure every `_index.md` entry for an existing global doc includes `Path`, `Summary`, `Read when`, and `Tags`.
-10. If the change introduces, removes, renames, or redefines important repository business-domain terms, also update `docs/DICTIONARY.md`.
+5. Preserve conceptual simplicity: do not broaden one doc to cover multiple distinct responsibilities just because they are adjacent in workflow or implementation.
+6. When an area has multiple clear responsibility boundaries, prefer one focused doc per responsibility or system part plus a composition doc that describes how the parts fit together.
+7. When a focused doc explicitly documents a system part, include the standard `Responsibility`, `Not responsible for`, `Inputs`, `Outputs`, and `Adjacent parts` sections unless the doc is clearly not a system-part doc.
+8. Add a new focused global doc only when no current doc in `docs/` is a good fit.
+9. Check the co-located `_index.md` first and update it if routing or discoverability changed.
+10. Walk upward one folder at a time toward `docs/_index.md`, updating or creating routing `_index.md` files only where needed.
+11. Stop once the next parent `_index.md` would not need any change.
+12. Ensure every `_index.md` entry for an existing global doc includes `Path`, `Summary`, `Read when`, and `Tags`.
+13. If the change introduces, removes, renames, or redefines important repository business-domain terms, also update `docs/DICTIONARY.md`.
 
 ## Boundaries
 
@@ -27,6 +30,7 @@ Use this skill whenever work changes global repository documentation or reposito
 - Do not use `README.md` as a routing index in this repository. Keep it as the folder's human mental-model entrypoint.
 - Do not use this skill for co-located `*.docs.md` files next to source files.
 - Do not preserve stale wording when the correct scope is now known.
+- Do not let implementation convenience or process adjacency justify a doc boundary that braids distinct responsibilities together.
 
 ## Canonical References
 

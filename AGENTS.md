@@ -24,6 +24,9 @@
 * Use `_decisions.md` only when rationale or tradeoffs would not be obvious from the current docs shape alone.
 * Do not create or update unrelated `_index.md` files outside the affected routing path in the `docs/` tree.
 * Every `_index.md` entry for an existing global doc should explicitly include `Path`, `Summary`, `Read when`, and `Tags`.
+* Do not broaden one doc to cover multiple distinct responsibilities just because they are adjacent in workflow or implementation.
+* When an area has clear responsibility boundaries, prefer one focused doc per responsibility or system part plus a composition doc.
+* When a focused doc explicitly documents a system part, include at least `Responsibility`, `Not responsible for`, `Inputs`, `Outputs`, and `Adjacent parts`.
 
 ### Business Dictionary Maintenance
 

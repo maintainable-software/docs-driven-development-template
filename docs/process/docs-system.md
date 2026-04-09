@@ -16,6 +16,21 @@ Recommended ownership:
 - topic docs under `docs/`: global canonical facts
 - `<file>.docs.md`: optional local documentation for one concrete file or module
 
+Conceptual-simplicity rules:
+
+- preserve conceptual simplicity when choosing doc boundaries
+- do not broaden one doc to cover multiple distinct responsibilities just because they are adjacent in workflow or implemented together
+- prefer one focused doc per responsibility or system part plus a composition doc that explains how the parts fit together
+- treat docs structure as part of the system design, not just as explanatory prose
+
+System-part doc shape:
+
+- `Responsibility`: what the part owns
+- `Not responsible for`: what adjacent parts own instead
+- `Inputs`: what comes into the part
+- `Outputs`: what leaves the part
+- `Adjacent parts`: which neighboring parts it composes with
+
 Routing contract entry shape for global docs:
 
 - heading: document title
@@ -32,6 +47,9 @@ Global docs maintenance rules:
 - add or update `_status.md` when the area has meaningful current-state volatility, active uncertainty, known gaps, or open questions
 - add or update `_decisions.md` when rationale or tradeoffs would not be obvious from the current docs shape alone
 - add a new focused doc only when no current doc is a good fit
+- preserve conceptual simplicity when choosing doc boundaries
+- do not broaden one doc to cover multiple distinct responsibilities just because they are adjacent in workflow or implemented together
+- when an area has multiple clear responsibility boundaries, prefer one focused doc per responsibility or system part plus a composition doc
 - when a global doc changes, check the co-located `_index.md` first
 - then walk upward one folder at a time toward `docs/_index.md`
 - update or create parent routing `_index.md` files only where routing or discoverability changed
@@ -48,6 +66,7 @@ Global docs reading rules:
 - read an area's `_decisions.md` when rationale or tradeoffs matter
 - read only the minimum sufficient set of global docs
 - if routing or reading reveals a meaningful contradiction or mismatch, surface it clearly even when contradiction-finding was not the user's primary request
+- when a focused doc explicitly documents a system part, use the standard `Responsibility`, `Not responsible for`, `Inputs`, `Outputs`, and `Adjacent parts` sections
 
 Co-located docs maintenance rules:
 
