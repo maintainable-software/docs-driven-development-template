@@ -5,6 +5,7 @@
 * For every substantive prompt, first use the `global-docs-router` skill.
 * When global docs are needed, route through the indexed docs system under `docs/` and read only the minimum sufficient set.
 * In each docs folder, treat `_index.md` as navigation, `README.md` as the mandatory human mental-model entrypoint, `_status.md` as present-state context, `_decisions.md` as rationale, and ordinary topic docs as focused mechanisms or rules.
+* When a task affects architecture, implementation boundaries, system decomposition, terminology boundaries, or docs structure, include `docs/process/conceptual-simplicity.md` in the minimum sufficient context.
 * When a task depends on repository business-domain terminology, terminology consistency, or docs prose that may introduce or change important terms, include `docs/DICTIONARY.md` in the minimum sufficient context.
 * If `global-docs-router` notices a meaningful contradiction or mismatch while routing or reading global docs, surface it clearly even if the user did not explicitly ask for contradiction-finding.
 

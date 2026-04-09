@@ -17,6 +17,7 @@ Routing rules:
 - `_status.md` captures present-state context, active uncertainty, known gaps, and open questions when that information matters
 - `_decisions.md` captures important rationale and tradeoffs when that information matters
 - each `_index.md` entry for an existing global doc should include `Path`, `Summary`, `Read when`, and `Tags`
+- `docs/process/conceptual-simplicity.md` should be read when the task affects conceptual boundaries, module responsibilities, terminology boundaries, system decomposition, or docs structure
 - `docs/DICTIONARY.md` should be read when the task depends on business-domain terminology or terminology consistency
 - `Read when` is the primary routing hint for deciding relevance
 - `Summary` explains the document's scope and intended use

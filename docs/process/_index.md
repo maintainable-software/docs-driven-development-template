@@ -22,6 +22,12 @@ Process docs define how repository documentation is structured, routed, and main
 - Read when: You need to understand why the docs process uses its current file roles and structural conventions.
 - Tags: docs, process, decisions, rationale
 
+### Conceptual Simplicity
+- Path: `docs/process/conceptual-simplicity.md`
+- Summary: Defines the repository's anti-complecting rules for code, terminology, docs structure, and system-part boundaries.
+- Read when: The task affects architecture, module boundaries, terminology boundaries, system decomposition, or how docs should be structured to preserve conceptual simplicity.
+- Tags: docs, process, simplicity, complexity, boundaries
+
 ### Docs Routing
 - Path: `docs/process/docs-routing.md`
 - Summary: Defines how global docs routing works, including using structured `_index.md` entries to decide which docs should be read for a task.
