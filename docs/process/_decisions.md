@@ -11,3 +11,39 @@
 ## Keep One Global Dictionary
 
 The repository uses `docs/DICTIONARY.md` instead of per-folder glossaries so terminology stays centralized and easier to keep consistent.
+
+## Split Dictionary Terms By Conceptual Role
+
+The repository keeps one global dictionary, but it does not flatten repository
+concepts and meta/internal terminology into one undifferentiated list.
+
+The dictionary uses a section for repository concepts and a section for
+meta/internal terms so both kinds of terms can stay canonical without blurring
+what belongs to the documented domain model itself.
+
+## Dictionary Coverage Requires An Area Pass
+
+Updating only the terms explicitly mentioned in a prompt is not enough once a
+docs area relies on a broader stable vocabulary.
+
+After substantively changing docs in an area, the workflow should scan that
+affected area for stable terms now relied on repeatedly, add missing dictionary
+entries that meet the criteria, link important uses, and remove stale links to
+removed entries.
+
+## Preserve Conceptual Simplicity Across Docs And Implementation
+
+The repository treats conceptual simplicity as more important than technical or
+editorial convenience.
+
+Docs should not merge distinct responsibilities just because they are adjacent
+in workflow or convenient to explain together. The same rule should guide
+implementation boundaries.
+
+## Let Docs Mirror Responsibility Boundaries
+
+When an area has clear conceptual parts, the docs should use one focused
+document per responsibility or system part plus a separate composition document
+rather than one umbrella document that mixes responsibilities.
+
+This keeps the docs usable as a design aid rather than only as prose.
