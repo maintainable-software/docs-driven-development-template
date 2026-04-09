@@ -21,7 +21,8 @@ Use this skill whenever work changes global repository documentation or reposito
 10. Walk upward one folder at a time toward `docs/_index.md`, updating or creating routing `_index.md` files only where needed.
 11. Stop once the next parent `_index.md` would not need any change.
 12. Ensure every `_index.md` entry for an existing global doc includes `Path`, `Summary`, `Read when`, and `Tags`.
-13. If the change introduces, removes, renames, or redefines important repository business-domain terms, also update `docs/DICTIONARY.md`.
+13. If the change introduces, removes, renames, or redefines important repository terms, also update `docs/DICTIONARY.md`.
+14. After substantively changing docs in an area, do a dictionary coverage pass over the affected docs area. Add missing stable terms that now matter, link important uses, and remove stale links to removed entries.
 
 ## Boundaries
 
@@ -31,6 +32,7 @@ Use this skill whenever work changes global repository documentation or reposito
 - Do not use this skill for co-located `*.docs.md` files next to source files.
 - Do not preserve stale wording when the correct scope is now known.
 - Do not let implementation convenience or process adjacency justify a doc boundary that braids distinct responsibilities together.
+- Do not treat dictionary maintenance as complete just because the explicitly mentioned terms were handled.
 
 ## Canonical References
 

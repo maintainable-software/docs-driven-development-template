@@ -32,6 +32,10 @@ anywhere in `docs/`.
 - Add or update entries when the project's terminology changes, when a term
   gains a new meaning, or when a newly introduced term becomes important to
   understanding the repository.
+- After substantively changing docs in an area, do a dictionary coverage pass
+  over the affected docs. Scan for stable terms the updated docs now rely on,
+  add missing entries for terms that meet the criteria, link important uses,
+  and remove stale links to removed entries.
 - Remove entries when the term is removed from the product or repository model
   entirely.
 - Write entries for readers with little domain knowledge. An entry should

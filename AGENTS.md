@@ -32,6 +32,7 @@
 
 * `docs/DICTIONARY.md` is the canonical dictionary for the repository terminology used by this repository's own `docs/` tree.
 * When docs or repository instructions introduce, rename, redefine, or remove important repository terms, use the `business-dictionary-maintainer` skill.
+* After substantively changing docs in an area, do a dictionary coverage pass over the affected docs. Add missing stable terms that now matter, link important uses, and remove stale links to removed terms.
 * In `docs/` prose, link repository terms to the matching dictionary entry unless the term is being used as code, CLI syntax, or a file path in backticks.
 
 ### Colocated Docs Maintenance

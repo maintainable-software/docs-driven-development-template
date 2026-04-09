@@ -56,6 +56,7 @@ Global docs maintenance rules:
 - ensure each `_index.md` entry for an existing global doc includes `Path`, `Summary`, `Read when`, and `Tags`
 - stop once the next parent `_index.md` would not need any change
 - update `docs/DICTIONARY.md` when important repository terms are introduced, renamed, redefined, or removed
+- after substantively changing docs in an area, do a dictionary coverage pass over the affected docs so stable terms now relied on by those docs are present in `docs/DICTIONARY.md`, linked where important, and stripped of stale removed-term links
 
 Global docs reading rules:
 
