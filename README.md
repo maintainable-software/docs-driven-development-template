@@ -1,4 +1,4 @@
-# Docs-Driven Agentic Engineering (DEA) Template
+# Docs-Driven Product Development (DPD) Template
 
 Template version: 1.0.0
 
@@ -9,7 +9,7 @@ Template version: 1.0.0
 
 ## What This Template Is For
 
-This template gives you an **easy starting point** for docs-driven agentic engineering (DEA).
+This template gives you an **easy starting point** for docs-driven product development (DPD).
 You'll get a reusable documentation workflow that you can copy into your own repository and adapt from there.
 
 - **Agents discover relevant docs**
@@ -26,7 +26,7 @@ For Codex:
 - copy the contents of `.codex/config.toml`
 - copy `.codex/profiles/repo-analyst.md` into your `.codex/profiles`
 
-This setup gives the destination repository the DEA documentation model, the Codex activation rules, and the Codex-specific workflow implementation.
+This setup gives the destination repository the DPD documentation model, the Codex activation rules, and the Codex-specific workflow implementation.
 
 Recommended target layout in the destination repository:
 
@@ -44,7 +44,7 @@ What each copied part does:
 | Path | Purpose |
 | --- | --- |
 | `AGENTS.md` | Contains the always-on repository rules. |
-| `docs/` | Contains the canonical shared DEA workflow documentation. |
+| `docs/` | Contains the canonical shared DPD workflow documentation. |
 | `.agents/skills/` | Contains the operational skills that implement the workflow. |
 | `.codex/config.toml` | Registers the reusable `repo-analyst` profile. |
 | `.codex/profiles/repo-analyst.md` | Defines the analytical reading behavior for deep repository understanding and contradiction-finding. |
@@ -99,7 +99,7 @@ Rules for this root `README.md`:
   - the intention of every file
   - which files are shared across all agents
   - which files are agent-specific and, when relevant, which agents they belong to
-  - the wiring of how the different agents implement the DEA workflow
+  - the wiring of how the different agents implement the DPD workflow
 
 ### High-Level Structure
 
@@ -150,7 +150,7 @@ These files are intended to be reusable regardless of agent vendor.
 `docs/process/_index.md`
 
 - Navigation file for the process docs area.
-- Routes readers to the specific process documents that define the DEA workflow.
+- Routes readers to the specific process documents that define the DPD workflow.
 
 `docs/process/README.md`
 
@@ -188,7 +188,7 @@ These files are intended to be reusable regardless of agent vendor.
 - Defines how to work safely when a repository has not fully adopted the indexed docs model.
 - Exists so the workflow can be applied incrementally in less normalized repositories.
 
-These files are shared because they define the DEA model itself rather than any Codex-specific mechanism.
+These files are shared because they define the DPD model itself rather than any Codex-specific mechanism.
 
 #### Codex Activation Layer
 
@@ -241,9 +241,9 @@ This file is explicitly wired to Codex skills by name:
 - Expands the default reading behavior to lower omission risk.
 - Optimizes for repository understanding, contradiction-finding, and broad context gathering instead of minimal implementation-oriented routing.
 
-### DEA Workflow Wiring
+### DPD Workflow Wiring
 
-The current DEA wiring for Codex works like this:
+The current DPD wiring for Codex works like this:
 
 1. The repository-level trigger lives in `AGENTS.md`.
 2. `AGENTS.md` requires global docs routing for every substantive prompt.
