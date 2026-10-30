@@ -78,11 +78,58 @@ structured `_index.md` files for discoverability.
 
 ## Meta And Internal Terms
 
+### Context Gap
+
+A specific piece of information, rule, relationship, or decision needed by a
+real task but not yet sufficiently established from relevant available context.
+The agent distinguishes a genuine gap from a routing failure, an implementation
+defect, or a temporary need for evidence. Gaps are assessed by documentation
+state and task-relative severity.
+
+Example: a cancellation task requires the permitted cutoff, but the relevant
+documentation and code do not establish the intended business rule.
+
+### Context Sufficiency
+
+A task-relative judgment that the information available from relevant
+documents, code, tests, and user requirements is adequate for the decisions the
+task actually requires. It is not a claim that the entire repository has
+complete documentation. The agent checks sufficiency after discovery and again
+when new consequential uncertainty appears.
+
+### Demand-Driven Context
+
+Demand-Driven Context (DDC) complements
+[Docs-Driven Product Development](#docs-driven-product-development) by improving
+repository documentation when real tasks reveal material missing, incomplete,
+stale, contradictory, or undecided knowledge. It identifies precise
+[context gaps](#context-gap), obtains clarification when needed, validates the
+resulting work, and curates reusable knowledge into the existing
+[indexed docs system](#indexed-docs-system) rather than creating a separate
+knowledge base.
+
 ### Dictionary Coverage Pass
 
 A review of the affected docs area after a substantive docs change to ensure
 stable terms used by that area are present in `docs/DICTIONARY.md`, important
 uses are linked where needed, and stale removed-term links are cleaned up.
+
+### Docs-Driven Product Development
+
+Docs-Driven Product Development (DPD) is this template's workflow for organizing,
+routing, reading, and maintaining repository documentation. It uses the
+[indexed docs system](#indexed-docs-system), optional
+[co-located docs](#co-located-docs), and a shared dictionary to keep documented
+knowledge discoverable and consistent as the repository changes.
+[Demand-Driven Context](#demand-driven-context) complements it when a task needs
+information that the available context does not yet establish.
+
+### Provisional Assumption
+
+An explicitly limited, unverified statement used to allow safe, reversible
+progress on a task while a needed answer remains unresolved. It must be stated
+clearly, used only within its approved scope, and must not be recorded as
+established canonical behavior.
 
 ### System-Part Doc
 

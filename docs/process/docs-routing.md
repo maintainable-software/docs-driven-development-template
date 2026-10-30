@@ -28,5 +28,8 @@ Routing rules:
 - global docs routing may correctly conclude that zero global docs need to be read
 - if routing or reading reveals a meaningful contradiction or mismatch, it should be surfaced clearly even when contradiction-finding was not the user's primary request
 - co-located docs are not part of the global routing tree and are discovered by adjacency when concrete files are opened
+- after routing and consulting task-relevant existing context, assess [context sufficiency](../DICTIONARY.md#context-sufficiency) for the task's material decisions; successfully finding documents does not by itself establish sufficiency
+- distinguish a failure to discover existing knowledge from knowledge that is actually missing, incomplete, stale, or contradictory; repair the relevant `_index.md` routing instead of duplicating existing facts when routing is the real problem
+- when a material [context gap](../DICTIONARY.md#context-gap) is encountered, use [Demand-Driven Context](demand-driven-context.md) to decide whether to ask, continue with a limited scope, or curate validated new context; do not read the entire docs tree merely to hunt for hypothetical gaps
 
 This pattern exists to minimize prompt noise while preserving discoverability.

@@ -30,6 +30,6 @@ This repository uses an indexed docs system.
 
 ### Process
 - Path: `docs/process/_index.md`
-- Summary: Repository-wide conventions for docs routing, docs maintenance, and the split between global indexed docs and optional co-located docs.
-- Read when: The task changes documentation workflow, repository instructions, docs indexing conventions, or how the agent should discover and maintain docs.
-- Tags: docs, process, routing, maintenance, agent-workflow
+- Summary: Repository-wide conventions for docs routing, maintenance, demand-driven context sufficiency and curation, and the split between global indexed docs and optional co-located docs.
+- Read when: The task changes documentation workflow, repository instructions, indexing conventions, how agents discover or maintain docs, or how missing task context is identified, clarified, and curated.
+- Tags: docs, process, routing, maintenance, agent-workflow, context-gaps

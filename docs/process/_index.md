@@ -1,6 +1,6 @@
 # Process
 
-Process docs define how repository documentation is structured, routed, and maintained.
+Process docs define how repository documentation is structured, routed, and maintained, including how task-driven context gaps are resolved.
 
 ## Documents
 
@@ -18,8 +18,8 @@ Process docs define how repository documentation is structured, routed, and main
 
 ### Process Decisions
 - Path: `docs/process/_decisions.md`
-- Summary: Rationale for separating routing, mental-model, status, and rationale docs in the process area.
-- Read when: You need to understand why the docs process uses its current file roles and structural conventions.
+- Summary: Rationale for separating documentation roles and integrating context sufficiency and validated curation into the existing workflow.
+- Read when: You need to understand the docs process boundaries, its file roles, or the choices behind demand-driven context integration.
 - Tags: docs, process, decisions, rationale
 
 ### Conceptual Simplicity
@@ -30,14 +30,20 @@ Process docs define how repository documentation is structured, routed, and main
 
 ### Docs Routing
 - Path: `docs/process/docs-routing.md`
-- Summary: Defines how global docs routing works, including using structured `_index.md` entries to decide which docs should be read for a task.
-- Read when: The task changes doc discovery, routing behavior, index shape, or how the minimum sufficient set of global docs should be selected.
+- Summary: Defines global docs discovery through structured `_index.md` entries and distinguishes successful retrieval from sufficient task context.
+- Read when: The task changes doc discovery, routing behavior, index shape, selection of the minimum relevant docs, or the transition from discovery to context assessment.
 - Tags: docs, routing, indexing, read-when, discovery
+
+### Demand-Driven Context
+- Path: `docs/process/demand-driven-context.md`
+- Summary: Defines task-driven context sufficiency checks, missing-knowledge handling, targeted user clarification, and validated curation into existing documentation.
+- Read when: The task requires assessing missing or contradictory context, deciding whether to interrupt for a knowledge gap, handling user answers or provisional assumptions, or curating knowledge discovered during development.
+- Tags: docs, process, demand-driven-context, context-gap, sufficiency, clarification, curation
 
 ### Docs System
 - Path: `docs/process/docs-system.md`
-- Summary: Defines the repository documentation model, including global indexed docs under `docs/`, optional co-located docs, and the maintenance expectations for both.
-- Read when: The task changes the overall documentation system, ownership of docs files, index maintenance rules, or the relationship between global and co-located docs.
+- Summary: Defines global indexed docs, optional co-located docs, and maintenance of canonical knowledge, including validated context supplied during development.
+- Read when: The task changes the documentation model, canonical placement, index maintenance, knowledge curation, or the relationship between global and co-located docs.
 - Tags: docs, system, maintenance, global-docs, colocated-docs
 
 ### Dictionary
@@ -48,8 +54,8 @@ Process docs define how repository documentation is structured, routed, and main
 
 ### Colocated Docs
 - Path: `docs/process/colocated-docs.md`
-- Summary: Defines the naming convention, purpose, and conservative maintenance rules for optional `*.docs.md` files next to concrete source or configuration files.
-- Read when: The task involves creating, reading, or updating co-located docs, or deciding whether file-specific documentation belongs next to code instead of in `docs/`.
+- Summary: Defines naming, purpose, and conservative maintenance of optional adjacent `*.docs.md` files, including corrections from validated context without source edits.
+- Read when: The task involves creating, reading, or updating co-located docs, correcting local knowledge even without a source edit, or deciding whether file-specific documentation belongs next to code instead of in `docs/`.
 - Tags: docs, colocated, module-docs, file-docs, maintenance
 
 ### Transitional Docs

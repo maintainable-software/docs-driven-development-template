@@ -59,6 +59,15 @@ Global docs maintenance rules:
 - update `docs/DICTIONARY.md` when important repository terms are introduced, renamed, redefined, or removed
 - after substantively changing docs in an area, do a dictionary coverage pass over the affected docs so stable terms now relied on by those docs are present in `docs/DICTIONARY.md`, linked where important, and stripped of stale removed-term links
 
+Demand-driven curation rules:
+
+- when real development work reveals a material [context gap](../DICTIONARY.md#context-gap), follow [Demand-Driven Context](demand-driven-context.md) before inventing a missing rule
+- when the user provides missing context during an authorized repository-editing task, automatically assess whether it is sufficiently clear, reusable, and consistent to warrant an update to an existing canonical doc
+- prepare justified updates to existing canonical docs as part of the same task, subject to normal validation and repository review; do not automatically turn tentative answers or [provisional assumptions](../DICTIONARY.md#provisional-assumption) into established facts
+- choose the smallest appropriate existing global doc, dictionary entry, status doc, decision doc, or adjacent existing co-located doc; do not duplicate one fact across several documents
+- if no focused global doc is suitable, propose a new topic document and follow the user's documentation-scope decisions rather than silently expanding the docs tree
+- do not require knowledge provenance, person/team ownership tracking, a separate DDC knowledge base, or mandatory DDC cycle logs
+
 Global docs reading rules:
 
 - route through `docs/_index.md` first when global docs are needed
@@ -67,6 +76,7 @@ Global docs reading rules:
 - read an area's `_status.md` when current reality or active uncertainty matters
 - read an area's `_decisions.md` when rationale or tradeoffs matter
 - read only the minimum sufficient set of global docs
+- read [Demand-Driven Context](demand-driven-context.md) when the task needs material gap resolution or knowledge curation, not automatically for every task
 - if routing or reading reveals a meaningful contradiction or mismatch, surface it clearly even when contradiction-finding was not the user's primary request
 - when a focused doc explicitly documents a system part, use the standard `Responsibility`, `Not responsible for`, `Inputs`, `Outputs`, and `Adjacent parts` sections
 
@@ -74,6 +84,7 @@ Co-located docs maintenance rules:
 
 - when a concrete source or configuration file changes, check whether an adjacent co-located docs file exists
 - if it exists and the change affects documented behavior, interface, intent, invariants, or constraints, update it in the same task
+- when validated reusable context affects an existing relevant adjacent doc during an authorized editing task, update it even if its source/config file did not change; follow [Demand-Driven Context](demand-driven-context.md) for validation and scope
 - if it does not exist, do not create one as part of normal maintenance
 - new co-located docs are created manually and only when explicitly requested
 - co-located docs do not participate in `docs/_index.md` routing or `_index.md` propagation

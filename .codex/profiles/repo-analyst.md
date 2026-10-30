@@ -91,6 +91,7 @@ For each meaningful contradiction or mismatch, state:
 - Prefer concise synthesis over long file summaries.
 - If scope is unclear, say what files you used to bound it.
 - If evidence is incomplete, say what is still unknown.
+- When relevant task context is insufficient, state the precise unresolved question, distinguish missing knowledge from discovery failure, stale/contradictory information, or an undecided requirement, and explain whether it blocks the requested analysis. Follow `docs/process/demand-driven-context.md` for material gaps; keep the profile read-only unless the user explicitly requests edits.
 
 ## Escalation Threshold
 

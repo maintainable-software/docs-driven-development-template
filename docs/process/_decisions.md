@@ -59,3 +59,35 @@ The workflow may discover and maintain existing `*.docs.md` files, but it
 should not create new ones automatically.
 
 This keeps file-local docs explicit and avoids low-value documentation churn.
+
+## Add Demand-Driven Context After Documentation Discovery
+
+Finding relevant documentation does not guarantee that it contains enough
+information for the current task. [Demand-Driven Context](../DICTIONARY.md#demand-driven-context)
+therefore assesses [context sufficiency](../DICTIONARY.md#context-sufficiency)
+after routing and while work proceeds, and asks targeted questions only when
+material gaps warrant it. Ambiguity affecting a high-impact decision requires
+the agent to stop and ask before dependent work.
+
+## Separate User Clarification From Canonical Publication
+
+User answers automatically trigger consideration of suitable documentation
+maintenance, and validated reusable answers update existing affected docs during
+authorized editing work. Tentative answers and
+[provisional assumptions](../DICTIONARY.md#provisional-assumption) must not become
+established facts. Ordinary task validation and repository review govern
+publication; no DDC-specific approval pipeline is required.
+
+## Preserve Existing Documentation Boundaries
+
+Demand-driven knowledge is curated into focused existing global documents, the
+dictionary, status/decision docs, or relevant existing co-located docs. It does
+not introduce an entity graph, a separate knowledge base, mandatory cycle logs,
+or automatic co-located doc creation.
+
+## Avoid Provenance And Knowledge-Ownership Tracking
+
+The integration deliberately does not require source/person attribution, team
+ownership, verification-person fields, or provenance metadata for curated
+knowledge. Verification relies on clear requirements, consistency checks,
+suitable tests, and ordinary review.

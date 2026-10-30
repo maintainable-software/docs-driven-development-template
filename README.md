@@ -15,6 +15,7 @@ You'll get a reusable documentation workflow that you can copy into your own rep
 - **Agents discover relevant docs**
 - **Agents maintain docs system**
 - **Engineers remain in control over what to add and when**
+- **Agents surface material missing context and help turn validated answers into reusable documentation**
 
 ## How To Set Up
 
@@ -56,6 +57,7 @@ What each copied part does:
 - You decide which docs to add, when to add docs and how (manually, automated workflows, etc)
 - The workflow then helps the agent consistently
   - route through the relevant docs
+  - identify material context gaps and ask focused questions when needed
   - maintain the docs system
   - keep documentation aligned with repository truth.
 
@@ -69,7 +71,7 @@ What users need to do:
 - define which topic docs should be added as the repository grows
 - decide what belongs in global docs versus co-located `*.docs.md` files
 - define the repository's actual terminology in `docs/DICTIONARY.md` once stable terms exist
-- make explicit when new workflow conventions or product concepts should become canonical documentation
+- establish new workflow conventions and product requirements clearly; validated reusable clarifications can then update existing docs during authorized editing tasks
 - create new co-located docs manually and explicitly when they are warranted; the workflow will not generate them for you
 
 What the workflow automates for Codex once those structures exist:
@@ -77,12 +79,15 @@ What the workflow automates for Codex once those structures exist:
 - routing through global docs for every substantive prompt
 - reading only the minimum sufficient set of global docs by default
 - checking for adjacent co-located docs when concrete files are read
-- updating existing co-located docs when the documented file changes in a relevant way
+- updating existing co-located docs when the documented file changes in a relevant way, or validated reusable context corrects the doc even without a source-file edit
 - maintaining `_index.md` routing integrity when global docs change
 - maintaining `README.md` as the human mental-model entrypoint in each docs folder
 - maintaining `_status.md` and `_decisions.md` when current-state or rationale information changes
 - maintaining `docs/DICTIONARY.md` when important repository terminology is introduced, changed, or removed
 - proactively surfacing meaningful contradictions noticed while routing or reading docs
+- assessing whether the discovered docs and task-relevant code provide enough context for material decisions
+- asking focused questions when blocking context is missing while allowing safe work to continue when gaps are non-blocking
+- incorporating validated reusable user answers into existing canonical docs during authorized repository-editing tasks
 
 In practice, the workflow works best when users treat documentation structure as part of repository design. The automation keeps the system coherent, but it does not decide the repository's product model or documentation scope on its own.
 
@@ -166,6 +171,12 @@ These files are intended to be reusable regardless of agent vendor.
 
 - Rationale for the process docs area.
 - Explains why routing, status, and rationale are separated.
+- Records why context sufficiency and curation extend the existing documentation model.
+
+`docs/process/conceptual-simplicity.md`
+
+- Defines focused responsibility boundaries for code, terminology, and documentation.
+- Explains how to compose distinct parts and document their interfaces without mixing their responsibilities.
 
 `docs/process/docs-routing.md`
 
@@ -178,10 +189,16 @@ These files are intended to be reusable regardless of agent vendor.
 - Explains the split between global docs under `docs/` and optional co-located docs in `*.docs.md`.
 - Defines maintenance expectations for routing, dictionary updates, and doc ownership.
 
+`docs/process/demand-driven-context.md`
+
+- Defines task-relative context sufficiency, gap classification, interruption behavior, treatment of provisional assumptions, and validated curation into the existing documentation model.
+- Requires no separate knowledge base and no mandatory provenance or knowledge-ownership metadata.
+
 `docs/process/colocated-docs.md`
 
 - Defines the naming, purpose, and constraints for co-located `*.docs.md` files.
 - Establishes that co-located docs are optional and discovered by adjacency rather than global routing.
+- Allows validated context to update existing adjacent docs without a corresponding source-file edit; new co-located docs still require an explicit request.
 
 `docs/process/transitional-docs.md`
 
@@ -197,6 +214,7 @@ These files are shared because they define the DPD model itself rather than any 
 - Declares the always-on repository rules that activate the workflow for Codex.
 - Routes detailed policy into `docs/process/` instead of duplicating it locally.
 - Tells the agent when to invoke the routing, dictionary, and co-located docs skills.
+- Activates context-sufficiency assessment, targeted clarification, and validated curation during authorized editing tasks.
 
 This file is explicitly wired to Codex skills by name:
 
@@ -212,10 +230,12 @@ This file is explicitly wired to Codex skills by name:
 
 - Codex operational skill for deciding whether global docs are needed and, if they are, reading the minimum sufficient set.
 - Implements proactive contradiction surfacing during routing.
+- Assesses context sufficiency after discovery and applies the shared DDC policy when material gaps remain.
 
 `.agents/skills/global-docs-maintainer/SKILL.md`
 
 - Codex operational skill for maintaining canonical docs and `_index.md` routing integrity when repository truth changes.
+- Prepares justified updates to existing global docs when validated reusable answers resolve a context gap during authorized editing tasks.
 
 `.agents/skills/business-dictionary-maintainer/SKILL.md`
 
@@ -227,7 +247,7 @@ This file is explicitly wired to Codex skills by name:
 
 `.agents/skills/colocated-docs-maintainer/SKILL.md`
 
-- Codex operational skill for updating an existing adjacent `*.docs.md` file when the documented file changes.
+- Codex operational skill for updating an existing adjacent `*.docs.md` file when the documented file changes or validated reusable context affects the doc, even if the source file is unchanged.
 
 `.codex/config.toml`
 
@@ -252,6 +272,10 @@ The current DPD wiring for Codex works like this:
 5. The actual operational behavior is implemented by the Codex skills in `.agents/skills/`.
 6. Those skills read the canonical rules from `docs/` and apply them to the current task.
 7. For deep analysis tasks, `.codex/config.toml` exposes the `repo-analyst` profile, which uses `.codex/profiles/repo-analyst.md` to widen the reading strategy beyond the default conservative router behavior.
+
+After discovering relevant docs and code, the workflow assesses whether material context is sufficient. When it is not, the existing routing/maintenance behavior applies the Demand-Driven Context (DDC) policy in `docs/process/demand-driven-context.md`: blocking gaps are clarified before dependent work, non-blocking gaps can be deferred, and validated reusable answers can trigger edits to existing canonical docs. The operational changes extend existing skills; no new mandatory DDC skill or agent profile is required.
+
+When context is sufficient, the agent proceeds without an extra DDC report or question. Tentative answers and temporary assumptions remain provisional, and analytical or read-only tasks do not authorize file edits. Ordinary repository validation and review govern acceptance of prepared changes.
 
 That means the wiring is intentionally layered:
 

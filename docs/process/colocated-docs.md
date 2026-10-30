@@ -22,3 +22,6 @@ Rules:
 - do not create a new co-located docs file as part of normal maintenance
 - new co-located docs are created manually and only when the user explicitly requests them
 - co-located docs do not participate in the global `docs/_index.md` index system
+- when validated new context supplied during an authorized editing task changes an existing relevant adjacent `*.docs.md`, update it even if its concrete source/config file was not modified; follow [Demand-Driven Context](demand-driven-context.md) for validation and curation
+- user-supplied context does not authorize automatic creation of a new co-located docs file; if none exists, recommend one only when useful and obtain explicit user instruction before creating it
+- route cross-cutting knowledge to the appropriate [global doc](../DICTIONARY.md#global-docs) rather than duplicating it across unrelated co-located docs
