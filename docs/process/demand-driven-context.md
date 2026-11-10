@@ -1,3 +1,17 @@
+---
+type: Reference
+title: Demand-Driven Context
+description: Defines task-driven context sufficiency checks, missing-knowledge handling, targeted user clarification, and validated curation into existing documentation.
+tags:
+  - docs
+  - process
+  - demand-driven-context
+  - context-gap
+  - sufficiency
+  - clarification
+  - curation
+---
+
 # Demand-Driven Context
 
 ## Purpose
@@ -36,7 +50,8 @@ and maintenance rules.
 
 For every substantive task:
 
-1. Route through relevant global docs according to `docs-routing.md`. Routing
+1. Route through relevant global docs according to [Docs Routing](docs-routing.md),
+   starting with [the root index](../index.md) when global docs are needed. Routing
    may correctly identify zero global docs to read.
 2. When reading concrete source/config files, inspect relevant adjacent
    `*.docs.md` files using the existing co-located docs rules.
@@ -54,7 +69,7 @@ When context is sufficient, proceed without a user-facing DDC ceremony.
 Distinguish these situations before asking for information:
 
 - **Routing/discovery failure**: the answer exists but was not found; fix
-  discovery and, when appropriate, the relevant `_index.md` entry.
+  discovery and, when appropriate, the relevant `index.md` entry.
 - **Knowledge gap**: a [context gap](../DICTIONARY.md#context-gap) where relevant knowledge is absent, partial, stale, conflicting,
   or only available outside canonical docs.
 - **Undecided requirement**: a design or business policy has not been decided.
@@ -180,11 +195,11 @@ Use the existing [indexed docs system](../DICTIONARY.md#indexed-docs-system) cat
 - Relevant `_status.md`: consequential current uncertainty, unresolved gap,
   or known difference between intended and implemented behavior.
 - Relevant `_decisions.md`: rationale and tradeoffs of meaningful decisions.
-- Relevant `_index.md`: navigation updates when discovery changes.
+- Relevant `index.md`: navigation updates when discovery changes.
 
 Choose the place by **conceptual scope**, not by the file the agent happened to
 have open. Avoid duplicating the same canonical rule across global and local
-docs. Co-located files remain excluded from the global `_index.md` tree.
+docs. Co-located files remain excluded from the global `index.md` tree.
 
 ### Existing co-located docs without a source-code edit
 

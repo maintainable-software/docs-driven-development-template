@@ -1,3 +1,15 @@
+---
+type: Glossary
+title: Dictionary
+description: Canonical definitions for the repository terminology used by this repository's own `docs/` tree.
+tags:
+  - docs
+  - dictionary
+  - terminology
+  - glossary
+  - repository-language
+---
+
 # Dictionary
 
 This file is the canonical dictionary for the repository terminology used by
@@ -55,6 +67,13 @@ anywhere in `docs/`.
 
 ## Repository Concepts
 
+### Area Entry
+
+A discovery entry in a parent `index.md` that links to a child area's
+`index.md`. Its description, reading conditions, and tags are maintained in
+the parent index; there is no concept frontmatter to project from a nested
+index. It directs the reader to local routing before individual concepts.
+
 ### Co-Located Docs
 
 Optional Markdown files named `*.docs.md` that live next to one concrete
@@ -62,19 +81,51 @@ source or configuration file and capture local guidance that would be hard to
 recover quickly from code alone.
 
 They are discovered by adjacency rather than through the global docs index.
+Files outside `docs/` are outside the [OKF bundle](DICTIONARY.md#okf-bundle) and do not
+require OKF frontmatter.
+
+### Concept Document
+
+A Markdown unit of knowledge within the [OKF bundle](DICTIONARY.md#okf-bundle), excluding
+the reserved `index.md` and `log.md` filenames. This includes overviews,
+status docs, decision records, the Dictionary, and focused topic documents.
+Its YAML frontmatter owns type, title, description, and tags; its body retains
+its existing documentation responsibility.
 
 ### Global Docs
 
 The canonical documentation files under `docs/` that define repository-wide
 facts, workflow rules, routing metadata, and shared terminology.
 
-They are routed through `docs/_index.md` and area `_index.md` files.
+They are routed through `docs/index.md` and area `index.md` files.
+
+### Index Projection
+
+A concept's title, description, or tags copied from its frontmatter into its
+containing index's discovery entry. This deliberate duplication makes initial
+selection possible without opening every concept. Description/tag changes
+update their projections in the same change; `Read when` is independently
+curated and is not a projection. [Area entries](DICTIONARY.md#area-entry) also own their
+metadata independently.
 
 ### Indexed Docs System
 
-The repository documentation model that separates [global docs](#global-docs)
-under `docs/` from optional [co-located docs](#co-located-docs) and uses
-structured `_index.md` files for discoverability.
+The repository documentation model that separates [global docs](DICTIONARY.md#global-docs)
+under `docs/` from optional [co-located docs](DICTIONARY.md#co-located-docs) and uses
+linked-list `index.md` files for hierarchical discoverability. Each discovery
+entry supplies a linked title, description, primary `Read when` condition,
+and secondary tags.
+
+### OKF Bundle
+
+The directory tree distributed as Open Knowledge Format knowledge. In this
+repository it is exactly `docs/`, targeting OKF v0.2, not the repository root
+or whichever folder is opened as an Obsidian vault. Repository instructions,
+agent skills, and co-located docs elsewhere are outside this boundary.
+
+The root `index.md` declares the version; nested indexes have no frontmatter.
+Other Markdown files are [concept documents](DICTIONARY.md#concept-document), except for
+the reserved optional `log.md`, which this template does not use.
 
 ## Meta And Internal Terms
 
@@ -100,12 +151,12 @@ when new consequential uncertainty appears.
 ### Demand-Driven Context
 
 Demand-Driven Context (DDC) complements
-[Docs-Driven Product Development](#docs-driven-product-development) by improving
+[Docs-Driven Product Development](DICTIONARY.md#docs-driven-product-development) by improving
 repository documentation when real tasks reveal material missing, incomplete,
 stale, contradictory, or undecided knowledge. It identifies precise
-[context gaps](#context-gap), obtains clarification when needed, validates the
+[context gaps](DICTIONARY.md#context-gap), obtains clarification when needed, validates the
 resulting work, and curates reusable knowledge into the existing
-[indexed docs system](#indexed-docs-system) rather than creating a separate
+[indexed docs system](DICTIONARY.md#indexed-docs-system) rather than creating a separate
 knowledge base.
 
 ### Dictionary Coverage Pass
@@ -118,10 +169,10 @@ uses are linked where needed, and stale removed-term links are cleaned up.
 
 Docs-Driven Product Development (DPD) is this template's workflow for organizing,
 routing, reading, and maintaining repository documentation. It uses the
-[indexed docs system](#indexed-docs-system), optional
-[co-located docs](#co-located-docs), and a shared dictionary to keep documented
+[indexed docs system](DICTIONARY.md#indexed-docs-system), optional
+[co-located docs](DICTIONARY.md#co-located-docs), and a shared dictionary to keep documented
 knowledge discoverable and consistent as the repository changes.
-[Demand-Driven Context](#demand-driven-context) complements it when a task needs
+[Demand-Driven Context](DICTIONARY.md#demand-driven-context) complements it when a task needs
 information that the available context does not yet establish.
 
 ### Provisional Assumption

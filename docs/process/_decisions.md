@@ -1,6 +1,20 @@
+---
+type: Decision Record
+title: Process Decisions
+description: Rationale for separating documentation roles and integrating context sufficiency and validated curation into the existing workflow.
+tags:
+  - docs
+  - process
+  - decisions
+  - rationale
+---
+
 # Process Decisions
 
 ## Separate Routing From Explanation
+
+Historical filename guidance below is superseded by the OKF v0.2 decision at
+the end of this document. The responsibility boundary remains unchanged.
 
 `_index.md` exists to support routing and discoverability. `README.md` exists to help a human understand the area. Keeping those roles separate makes each file easier to maintain.
 
@@ -91,3 +105,28 @@ The integration deliberately does not require source/person attribution, team
 ownership, verification-person fields, or provenance metadata for curated
 knowledge. Verification relies on clear requirements, consistency checks,
 suitable tests, and ordinary review.
+
+## Preserve DPD Routing While Adopting OKF v0.2
+
+Use `index.md` and linked-list entries to make the global docs bundle readable
+as OKF v0.2 and in Obsidian. Keep the root index for resources and child areas,
+and the process index for its concepts. Remove only the duplicate Dictionary
+discovery entry here; meaningful links to its definitions remain.
+
+Keep all three routing signals: `Read when` primarily selects documents,
+descriptions explain scope, and tags support semantic matching. The deliberate
+description/tag projections avoid a preliminary scan of all frontmatter, so
+hierarchical, demand-driven discovery still limits context loading. Frontmatter
+is authoritative for concept metadata; index-owned reading conditions retain
+their specificity when projections change. Parent indexes separately own area
+metadata because child indexes have no frontmatter.
+
+Add lightweight maintenance/CI validation for our stricter routing and metadata
+contract, distinguishing it from OKF conformance, which permits missing indexes
+and unresolved links. Validation may scan the bundle; ordinary routing stays
+selective. The analyst reading mode, contradiction handling, context sufficiency,
+and validated curation rules remain in force.
+
+Keep the global/co-located boundary: existing file-specific docs stay adjacent
+to their files and outside global routing. Markdown links need no Obsidian
+plugin, and opening a wider vault does not widen the OKF bundle.

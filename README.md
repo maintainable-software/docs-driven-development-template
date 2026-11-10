@@ -1,11 +1,11 @@
 # Docs-Driven Product Development (DPD) Template
 
-Template version: 1.0.0
-
 - [What This Template Is For](#what-this-template-is-for)
 - [How To Set Up](#how-to-set-up)
 - [How To Use This Workflow](#how-to-use-this-workflow)
 - [Technical Documentation](#technical-documentation)
+
+Template version: 1.0.0
 
 ## What This Template Is For
 
@@ -26,6 +26,9 @@ For Codex:
 - copy `.agents/skills/` into the target repository
 - copy the contents of `.codex/config.toml`
 - copy `.codex/profiles/repo-analyst.md` into your `.codex/profiles`
+- copy `scripts/validate-docs.py`, `scripts/test_validate_docs.py`, and `requirements-docs.txt` for structural validation
+- merge the `.gitignore` rules for personal Obsidian settings and Python validation artifacts
+- copy `.github/workflows/docs.yml` or add its validation commands to your existing CI
 
 This setup gives the destination repository the DPD documentation model, the Codex activation rules, and the Codex-specific workflow implementation.
 
@@ -38,6 +41,11 @@ Recommended target layout in the destination repository:
   .agents/skills/
   .codex/config.toml
   .codex/profiles/repo-analyst.md
+  scripts/validate-docs.py
+  scripts/test_validate_docs.py
+  requirements-docs.txt
+  .github/workflows/docs.yml
+  .gitignore
 ```
 
 What each copied part does:
@@ -49,6 +57,52 @@ What each copied part does:
 | `.agents/skills/` | Contains the operational skills that implement the workflow. |
 | `.codex/config.toml` | Registers the reusable `repo-analyst` profile. |
 | `.codex/profiles/repo-analyst.md` | Defines the analytical reading behavior for deep repository understanding and contradiction-finding. |
+| `scripts/` and `requirements-docs.txt` | Validate documentation structure and exercise focused regression cases using development-only dependencies. |
+| `.github/workflows/docs.yml` | Runs the documentation checks on pushes and pull requests. |
+| `.gitignore` | Excludes personal vault configuration and local Python validation artifacts. |
+
+### Validation Setup
+
+Use Python 3.12 or newer. From the repository root:
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python3 -m pip install -r requirements-docs.txt
+python3 scripts/validate-docs.py
+```
+
+After setup, `python3 scripts/validate-docs.py` is the local validation command.
+PyYAML parses YAML; markdown-it-py parses actual Markdown links and list items.
+These dependencies are only for development/validation. Reading and using the
+docs requires neither Python nor Obsidian.
+
+### Optional Obsidian Setup
+
+1. Open `docs/` as an existing Obsidian vault.
+2. In **Settings → Files and links**, disable **Use Wikilinks**.
+3. Set **New link format** to **Relative path to file**.
+
+Use ordinary Markdown links with explicit file destinations, such as
+`[Process](process/index.md)` from a document in `docs/`. See Obsidian's
+[link formats](https://help.obsidian.md/links) and
+[settings reference](https://help.obsidian.md/settings).
+
+Opening only `docs/` excludes adjacent file-specific documentation elsewhere.
+Open the repository root as the vault instead when you want those files in the
+same vault; the OKF bundle boundary remains `docs/`. Personal configuration at
+`docs/.obsidian/` and `.obsidian/` is ignored by Git. No community plugins are
+required, and GitHub or a plain Markdown editor remains sufficient.
+
+### Migrating An Existing Template Installation
+
+This is a breaking convention change: update index filenames, entry structure,
+and consuming instructions together. Rename `docs/_index.md` and area
+`_index.md` files to `index.md`, convert `Path`/`Summary` records into linked
+list entries, and add concept frontmatter. Preserve `Read when` specificity and
+useful tags, refresh skill references, and update any custom scripts or examples.
+Do not keep competing indexes. See [Transitional Docs](docs/process/transitional-docs.md)
+for incremental migration, preservation of existing metadata, and validation.
 
 ## How To Use This Workflow
 
@@ -80,7 +134,8 @@ What the workflow automates for Codex once those structures exist:
 - reading only the minimum sufficient set of global docs by default
 - checking for adjacent co-located docs when concrete files are read
 - updating existing co-located docs when the documented file changes in a relevant way, or validated reusable context corrects the doc even without a source-file edit
-- maintaining `_index.md` routing integrity when global docs change
+- maintaining `index.md` routing integrity when global docs change
+- maintaining concept metadata and its description/tag projections in discovery indexes
 - maintaining `README.md` as the human mental-model entrypoint in each docs folder
 - maintaining `_status.md` and `_decisions.md` when current-state or rationale information changes
 - maintaining `docs/DICTIONARY.md` when important repository terminology is introduced, changed, or removed
@@ -90,6 +145,44 @@ What the workflow automates for Codex once those structures exist:
 - incorporating validated reusable user answers into existing canonical docs during authorized repository-editing tasks
 
 In practice, the workflow works best when users treat documentation structure as part of repository design. The automation keeps the system coherent, but it does not decide the repository's product model or documentation scope on its own.
+
+For discovery, start at [docs/index.md](docs/index.md). A routing-convention task
+follows the process area link to [docs/process/index.md](docs/process/index.md)
+before choosing focused process documents. A terminology task can select the
+Dictionary directly from the root. **Read when** is the primary selection
+signal, the description supports relevance assessment, and tags provide
+secondary matching before a target is opened. Read the selected concept's
+frontmatter with its body; do not scan all frontmatter for initial selection.
+
+### Checking A Documentation Change
+
+Run `python3 scripts/validate-docs.py`. It checks the root version declaration,
+absence of nested-index frontmatter, concept metadata, linked-list routing
+hints, concept/area coverage, description/tag projections, and local Markdown
+links including heading fragments. External URLs are not fetched and code
+examples are not treated as navigation. Fragment checks use GitHub-style
+Markdown heading anchors; Obsidian-specific block references and raw HTML
+anchors are outside this template's link convention.
+
+These coverage, routing, consistency, and link-integrity checks are repository
+conventions, not universal OKF conformance requirements: OKF permits missing
+indexes and unresolved links. The validator does not implement optional OKF
+provenance, trust, lifecycle, computation, or log features.
+
+To exercise the validator's regression cases:
+
+```sh
+python3 -m unittest discover -s scripts -p 'test_*.py'
+```
+
+CI runs both commands. The tests use temporary copies of the bundle to verify
+acceptance, malformed YAML and missing type rejection, nested-index rejection,
+broken navigation, metadata drift, coverage, wrapping, and code-example handling.
+
+For a manual Obsidian smoke check, open the chosen vault, follow `docs/index.md`
+(or `index.md` in the docs-only vault) to `process/index.md`, open a topic, and
+follow a Dictionary definition link. Check its properties and tags, then create
+a link and confirm it uses a relative Markdown destination.
 
 ## Technical Documentation
 
@@ -120,17 +213,42 @@ The intended split is:
 - `AGENTS.md` makes the workflow mandatory for this repository
 - Codex-specific files implement Codex-native behavior on top of the shared model
 
+### OKF Bundle And Metadata Ownership
+
+The `docs/` directory is the bundle root for
+[Open Knowledge Format v0.2](https://github.com/GoogleCloudPlatform/open-knowledge-format/blob/0b87c52c6ef999286c745e19998fdfcd03d5dbee/SPEC.md).
+The root index declares `okf_version: "0.2"`; nested indexes have no frontmatter.
+Every non-reserved Markdown document in the bundle has concept metadata.
+OKF requires a non-empty `type`; this template also adopts `title`, `description`,
+and a tag list. READMEs use `Overview`, status docs `Status`, decision docs
+`Decision Record`, the Dictionary `Glossary`, and focused rules `Reference`.
+
+Concept frontmatter is authoritative for type, title, description, and tags.
+Indexes project the title as a link label, description beside the link, and the
+same tag collection as `Tags`. Update description/tag projections in the same
+change as their source. Each index independently owns `Read when` and the link
+destination. Entries pointing to a child index represent areas: all their
+routing metadata belongs to the parent index, with no frontmatter source.
+The full contract is in [Docs System](docs/process/docs-system.md#metadata-ownership).
+
+This preserves DPD's navigation/explanation split and selective context loading.
+Co-located docs remain adjacent to their files. Root Markdown, agent skills,
+and co-located docs outside `docs/` have no OKF frontmatter requirement.
+Existing status/decision docs and Git history remain sufficient; this migration
+adds no `log.md` or optional tracking metadata.
+
 ### File Inventory And Intent
 
 #### Shared Workflow Layer
 
 These files are intended to be reusable regardless of agent vendor.
 
-`docs/_index.md`
+`docs/index.md`
 
 - Root navigation file for the global docs tree.
 - First routing entrypoint when global docs are needed.
 - Defines the top-level docs areas and when each should be read.
+- Carries the bundle's version declaration and the sole Dictionary discovery entry.
 
 `docs/README.md`
 
@@ -152,10 +270,11 @@ These files are intended to be reusable regardless of agent vendor.
 - Canonical repository terminology dictionary for this repository's own docs.
 - Keeps repository language consistent, linkable, and centrally maintained.
 
-`docs/process/_index.md`
+`docs/process/index.md`
 
 - Navigation file for the process docs area.
 - Routes readers to the specific process documents that define the DPD workflow.
+- Contains no frontmatter; preserves overview, status, decisions, and focused-document discovery.
 
 `docs/process/README.md`
 
@@ -181,7 +300,7 @@ These files are intended to be reusable regardless of agent vendor.
 `docs/process/docs-routing.md`
 
 - Defines the routing model for global docs.
-- Establishes `_index.md` as navigation, `README.md` as the human entrypoint, `_status.md` as current-state context, `_decisions.md` as rationale, and topic docs as focused mechanisms or rules.
+- Establishes `index.md` as navigation, `README.md` as the human entrypoint, `_status.md` as current-state context, `_decisions.md` as rationale, and topic docs as focused mechanisms or rules.
 
 `docs/process/docs-system.md`
 
@@ -206,6 +325,19 @@ These files are intended to be reusable regardless of agent vendor.
 - Exists so the workflow can be applied incrementally in less normalized repositories.
 
 These files are shared because they define the DPD model itself rather than any Codex-specific mechanism.
+
+#### Validation And Repository Support
+
+These files are agent-independent and live outside the OKF bundle:
+
+| File | Intent |
+| --- | --- |
+| `README.md` | Template setup, usage, migration guidance, and the exhaustive file inventory. |
+| `scripts/validate-docs.py` | Read-only structural validation of the docs bundle's repository contract. |
+| `scripts/test_validate_docs.py` | Focused regression cases using disposable bundle copies. |
+| `requirements-docs.txt` | Pinned PyYAML and markdown-it-py validation dependencies. |
+| `.github/workflows/docs.yml` | Runs validation and regression cases in GitHub Actions. |
+| `.gitignore` | Ignores personal vault settings, the local virtual environment, and Python bytecode. |
 
 #### Codex Activation Layer
 
@@ -234,7 +366,7 @@ This file is explicitly wired to Codex skills by name:
 
 `.agents/skills/global-docs-maintainer/SKILL.md`
 
-- Codex operational skill for maintaining canonical docs and `_index.md` routing integrity when repository truth changes.
+- Codex operational skill for maintaining canonical docs and `index.md` routing integrity when repository truth changes.
 - Prepares justified updates to existing global docs when validated reusable answers resolve a context gap during authorized editing tasks.
 
 `.agents/skills/business-dictionary-maintainer/SKILL.md`
@@ -307,5 +439,5 @@ Co-located docs are for:
 
 The two systems are intentionally separate:
 
-- global docs participate in `_index.md` routing
+- global docs participate in `index.md` routing
 - co-located docs are discovered only by adjacency

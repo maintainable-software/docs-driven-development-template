@@ -1,3 +1,15 @@
+---
+type: Reference
+title: Conceptual Simplicity
+description: Defines the repository's anti-complecting rules for code, terminology, docs structure, and system-part boundaries.
+tags:
+  - docs
+  - process
+  - simplicity
+  - complexity
+  - boundaries
+---
+
 # Conceptual Simplicity
 
 This document defines how the repository applies simplicity and complexity to

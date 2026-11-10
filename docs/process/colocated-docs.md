@@ -1,3 +1,15 @@
+---
+type: Reference
+title: Colocated Docs
+description: Defines naming, purpose, and conservative maintenance of optional adjacent `*.docs.md` files, including corrections from validated context without source edits.
+tags:
+  - docs
+  - colocated
+  - module-docs
+  - file-docs
+  - maintenance
+---
+
 # Colocated Docs
 
 [Co-located docs](../DICTIONARY.md#co-located-docs) are optional Markdown
@@ -21,7 +33,13 @@ Rules:
 - when the documented file is modified, update its co-located docs file if it exists and is affected
 - do not create a new co-located docs file as part of normal maintenance
 - new co-located docs are created manually and only when the user explicitly requests them
-- co-located docs do not participate in the global `docs/_index.md` index system
+- co-located docs do not participate in the global `docs/index.md` index system
 - when validated new context supplied during an authorized editing task changes an existing relevant adjacent `*.docs.md`, update it even if its concrete source/config file was not modified; follow [Demand-Driven Context](demand-driven-context.md) for validation and curation
 - user-supplied context does not authorize automatic creation of a new co-located docs file; if none exists, recommend one only when useful and obtain explicit user instruction before creating it
 - route cross-cutting knowledge to the appropriate [global doc](../DICTIONARY.md#global-docs) rather than duplicating it across unrelated co-located docs
+
+The [OKF bundle](../DICTIONARY.md#okf-bundle) is rooted at `docs/`. Co-located
+files elsewhere keep their existing locations and adjacency-based discovery;
+they do not acquire an OKF frontmatter requirement. Opening only `docs/` as an
+Obsidian vault excludes those files. Opening the repository root includes them
+in the same vault without changing the bundle boundary or global routing.

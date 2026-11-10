@@ -45,6 +45,10 @@ repository.
 14. Remove dictionary entries when the term is removed from the product or
     repository model entirely, and remove stale links to removed entries from
     the affected docs.
+15. Maintain Dictionary discovery in `docs/index.md` only. Preserve meaningful
+    direct links to definitions from process documents. If Dictionary metadata
+    changes, update its root-index projection in the same change under the
+    global-docs-maintainer contract, preserving its reading conditions.
 
 ## Boundaries
 
@@ -66,6 +70,6 @@ repository.
 ## Canonical References
 
 Read [docs/DICTIONARY.md](../../../docs/DICTIONARY.md) for the canonical term definitions.
-Read [docs/_index.md](../../../docs/_index.md) for root docs routing.
+Read [docs/index.md](../../../docs/index.md) for root docs routing.
 Read [docs/process/conceptual-simplicity.md](../../../docs/process/conceptual-simplicity.md) when terminology needs to preserve clear conceptual boundaries.
 Read [docs/process/docs-system.md](../../../docs/process/docs-system.md) for the repository docs model.

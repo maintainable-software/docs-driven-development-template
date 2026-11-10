@@ -1,8 +1,22 @@
+---
+type: Status
+title: Process Status
+description: Current reality for the documentation-process area, including which workflow rules are active and where adoption is still incomplete.
+tags:
+  - docs
+  - process
+  - status
+  - current-state
+---
+
 # Process Status
 
 Current reality:
 
-- Global docs are routed through `docs/_index.md` and area `_index.md` files.
+- Global docs are routed through `docs/index.md` and area `index.md` files.
+- Linked-list entries preserve descriptions, primary `Read when` hints, and secondary tags. Routing reads concept frontmatter only after selection.
+- All process concepts have metadata; their index projections are validated. Area metadata is maintained independently in the parent index.
+- The validator and focused regression cases cover metadata parsing, index structure, coverage, projection drift, and local links. These checks enforce repository conventions beyond OKF's permissive conformance rules.
 - The normal docs workflow now treats `README.md` as the mandatory human entrypoint in each docs folder.
 - The docs process now explicitly routes conceptual-simplicity guidance for
   boundary, decomposition, terminology, and docs-structure tasks.
