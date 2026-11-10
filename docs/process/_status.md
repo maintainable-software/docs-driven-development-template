@@ -13,6 +13,8 @@ tags:
 
 Current reality:
 
+- Five shared [skills](../DICTIONARY.md#skill) have generated Claude copies; the [Bash synchronization workflow](skills.md) checks drift and protects manual edits.
+
 - Global docs are routed through `docs/index.md` and area `index.md` files.
 - Linked-list entries preserve descriptions, primary `Read when` hints, and secondary tags. Routing reads concept frontmatter only after selection.
 - All process concepts have metadata; their index projections are validated. Area metadata is maintained independently in the parent index.

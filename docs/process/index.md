@@ -41,3 +41,7 @@ Process docs define how repository documentation is structured, routed, and main
 - [Transitional Docs](transitional-docs.md) — Explains how to work safely in repositories whose documentation structure is only partially normalized toward the indexed global docs model.
   **Read when:** The repository has legacy docs locations, missing docs indexes, or mixed documentation patterns that need to be interpreted or normalized.
   **Tags:** docs, transitional, legacy, migration, normalization
+
+- [Shared Skills](skills.md) — Synchronizes canonical repository skills into generated Claude Code copies using Bash.
+  **Read when:** You edit shared skills, synchronize Claude copies, or troubleshoot synchronization conflicts.
+  **Tags:** skills, process, claude, codex

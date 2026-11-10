@@ -12,3 +12,9 @@
 * After discovering task-relevant documentation and code context, assess whether any material knowledge or unresolved decision is needed before dependent work. Follow `docs/process/demand-driven-context.md` when a meaningful gap is found; do not interrupt for informational gaps.
 * When a blocking context gap prevents a correct decision, stop and ask the user for the missing information or an explicit safe way to limit the task. Wait for their answer before making an ambiguous high-impact decision or starting dependent work. When non-blocking, continue useful work and surface material unresolved questions at the appropriate point.
 * When user-supplied information resolves a context gap, automatically assess whether existing docs need a validated, reusable update as part of an authorized editing task. Do not promote provisional assumptions into canonical truth or create new `*.docs.md` files automatically.
+
+### Shared Skills
+
+* Edit shared skills under `.agents/skills/`; `.claude/skills/` contains generated copies.
+* After changing skills, run `bash scripts/sync-skills.sh`, then `bash scripts/sync-skills.sh --check`.
+* See `docs/process/skills.md` for synchronization requirements and conflict recovery.

@@ -130,3 +130,12 @@ and validated curation rules remain in force.
 Keep the global/co-located boundary: existing file-specific docs stay adjacent
 to their files and outside global routing. Markdown links need no Obsidian
 plugin, and opening a wider vault does not widen the OKF bundle.
+
+## Share Skills Through Generated Copies
+
+Author shared [skills](../DICTIONARY.md#skill) once in `.agents/skills/` and
+copy them into Claude's discovery directory. Bash and GNU utilities suit this
+repository's Linux workflow. The [synchronization manifest](../DICTIONARY.md#synchronization-manifest)
+tracks ownership and fingerprints to protect manual edits and unrelated skills.
+The Bash implementation checks file structure rather than reimplementing a
+YAML parser. `CLAUDE.md` imports `AGENTS.md` to share repository instructions.

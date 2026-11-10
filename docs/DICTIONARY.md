@@ -127,6 +127,20 @@ The root `index.md` declares the version; nested indexes have no frontmatter.
 Other Markdown files are [concept documents](DICTIONARY.md#concept-document), except for
 the reserved optional `log.md`, which this template does not use.
 
+### Skill
+
+A reusable set of agent instructions in a directory containing `SKILL.md`.
+Shared repository skills are authored in `.agents/skills/` and copied into
+`.claude/skills/` with `bash scripts/sync-skills.sh` so Claude Code can discover
+them. See [Shared Skills](process/skills.md) for the workflow.
+
+### Synchronization Manifest
+
+The generated `.claude/skills/.sync-skills-manifest` file records which skill
+copies the synchronizer owns and their last generated fingerprints. It lets
+sync detect manual edits and remove stale copies while preserving unrelated
+Claude skills. Commit it together with the generated skill directories.
+
 ## Meta And Internal Terms
 
 ### Context Gap

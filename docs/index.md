@@ -27,5 +27,5 @@ Start here to discover global documentation.
 ## Areas
 
 - [Process](process/index.md) — Repository-wide conventions for docs routing, maintenance, demand-driven context sufficiency and curation, and the split between global indexed docs and optional co-located docs.
-  **Read when:** The task changes documentation workflow, repository instructions, indexing conventions, how agents discover or maintain docs, or how missing task context is identified, clarified, and curated.
+  **Read when:** The task changes documentation workflow, repository instructions, indexing conventions, how agents discover or maintain docs, how missing task context is identified, clarified, and curated, or how shared agent skills are synchronized.
   **Tags:** docs, process, routing, maintenance, agent-workflow, context-gaps
